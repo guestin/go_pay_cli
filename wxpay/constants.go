@@ -1,9 +1,9 @@
 package wxpay
 
 const (
-	sandBoxApiUrl    = "https://api.mch.weixin.qq.com/sandboxnew"
-	productionApiUrl = "https://api.mch.weixin.qq.com"
-	oauth2ApiUrl     = "https://api.weixin.qq.com/sns/oauth2"
+	SandBoxApiUrl    = "https://api.mch.weixin.qq.com/sandboxnew"
+	ProductionApiUrl = "https://api.mch.weixin.qq.com"
+	Oauth2ApiUrl     = "https://api.weixin.qq.com/sns/oauth2"
 )
 
 const (

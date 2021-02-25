@@ -54,10 +54,10 @@ func DefaultWxPayClient(appId, mchId, apiKey, appSecret, subAppId, subMchId, sig
 	assert.Must(len(appSecret) > 0, "app secret must not be null ").Panic()
 	assert.Must(signType == "MD5" || signType == "HMAC-SHA256",
 		"sign type must be one of ['MD5','HMAC-SHA256']").Panic()
-	apiUrl := productionApiUrl
+	apiUrl := ProductionApiUrl
 	sb := len(sandbox) > 0 && sandbox[0]
 	if sb {
-		apiUrl = sandBoxApiUrl
+		apiUrl = SandBoxApiUrl
 	}
 	validator, err := mvalidate.NewValidator("en")
 	assert.NoError(err).Panic()

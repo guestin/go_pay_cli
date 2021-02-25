@@ -1,8 +1,10 @@
 package alipay
 
+//goland:noinspection ALL
 const (
-	sandBoxApiUrl    = "https://openapi.alipaydev.com/gateway.do"
-	productionApiUrl = "https://openapi.alipay.com/gateway.do"
+	SandBoxApiUrl    = "https://openapi.alipaydev.com/gateway.do"
+	ProductionApiUrl = "https://openapi.alipay.com/gateway.do"
+	Oauth2ApiUrl     = "https://openauth.alipay.com/oauth2"
 )
 
 //noinspection ALL

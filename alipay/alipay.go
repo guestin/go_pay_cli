@@ -92,10 +92,10 @@ func DefaultAliPayClient(appId, appPrivateKey, signType string, sandbox ...bool)
 	assert.Must(signType == "RSA" || signType == "RSA2", "sign type must be one of ['RSA','RSA2']").Panic()
 	appPriKey, err := parserPrivateKey(appPrivateKey)
 	assert.Must(err != nil, "invalid app private key").Panic()
-	apiUrl := productionApiUrl
+	apiUrl := ProductionApiUrl
 	sb := len(sandbox) > 0 && sandbox[0]
 	if sb {
-		apiUrl = sandBoxApiUrl
+		apiUrl = SandBoxApiUrl
 	}
 	validator, err := mvalidate.NewValidator("en")
 	assert.NoError(err).Panic()

@@ -206,7 +206,7 @@ func (this *client) UserAccessToken(req *UserAccessTokenReq) (resp *UserAccessTo
 	}
 	params := req.toUrlValues()
 	apiName := req.ApiName()
-	apiUrl := fmt.Sprintf("%s%s?%s", oauth2ApiUrl, apiName, params.Encode())
+	apiUrl := fmt.Sprintf("%s%s?%s", Oauth2ApiUrl, apiName, params.Encode())
 	respBody, err := internal.HttpDo(this.ctx, defaultReqTimeout, this.httpCli, "GET", apiUrl, "")
 	if err != nil {
 		return nil, err
@@ -227,7 +227,7 @@ func (this *client) UserRefreshToken(req *UserRefreshTokenReq) (resp *UserAccess
 	}
 	params := req.toUrlValues()
 	apiName := req.ApiName()
-	apiUrl := fmt.Sprintf("%s%s?%s", oauth2ApiUrl, apiName, params.Encode())
+	apiUrl := fmt.Sprintf("%s%s?%s", Oauth2ApiUrl, apiName, params.Encode())
 	respBody, err := internal.HttpDo(this.ctx, defaultReqTimeout, this.httpCli, "GET", apiUrl, "")
 	if err != nil {
 		return nil, err
