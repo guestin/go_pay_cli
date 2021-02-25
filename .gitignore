@@ -2,6 +2,7 @@
 .vscode/
 vendor/
 Gopkg.lock
+go.sum
 build/
 test*.db
 static
