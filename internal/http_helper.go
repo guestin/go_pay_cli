@@ -23,7 +23,7 @@ func HttpDo(parentCtx context.Context,
 		latency := stop.Sub(start)
 		GLogger.Debugf("%s %s %s latency : %s"+
 			"\n%s"+
-			"\n%s",
+			"\n%s"+
 			"\n%s",
 			method,
 			url,
