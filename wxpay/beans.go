@@ -471,6 +471,7 @@ func (this *PayDownloadBillResp) IsSuccess() bool {
 
 type GetBrandWCPayRequestReq struct {
 	BaseReq
+	AppId    string `xml:"app_id" json:"app_id"`
 	PrepayId string `xml:"prepay_id" json:"prepay_id" validate:"required"` //统一下单接口返回的prepay_id参数值，提交格式如：prepay_id=***
 }
 

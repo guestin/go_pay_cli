@@ -128,8 +128,12 @@ func (this *client) GetBrandWCPayRequest(req *GetBrandWCPayRequestReq) (resp *Ge
 		return nil, err //errors.Wrap(err, "get sandbox sign key failed :")
 	}
 	now := internal.TimeNow()
+	appId := this.appId
+	if len(req.AppId) > 0 {
+		appId = req.AppId
+	}
 	resp = &GetBrandWCPayRequestResp{
-		AppId:     this.appId,
+		AppId:     appId,
 		Timestamp: fmt.Sprintf("%d", now.Unix()),
 		NonceStr:  internal.RandomString(16),
 		Package:   fmt.Sprintf("prepay_id=%s", req.PrepayId),
