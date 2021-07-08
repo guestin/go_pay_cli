@@ -199,7 +199,9 @@ func (this *client) execute(httpCli *http.Client, in Request, out interface{}) e
 	//if err != nil {
 	//	return err
 	//}
-	params.Set("appid", this.appId)
+	if params.Get("appid") == "" {
+		params.Set("appid", this.appId)
+	}
 	params.Set("mch_id", this.mchId)
 	if this.subAppId != "" && this.subMchId != "" {
 		params.Set("sub_appid", this.subAppId)

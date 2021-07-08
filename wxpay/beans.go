@@ -134,6 +134,7 @@ func (this *PayOrderOptional) toUrlValues() url.Values {
 // https://pay.weixin.qq.com/wiki/doc/api/jsapi_sl.php?chapter=9_1
 type PayUnifiedOrderReq struct {
 	BaseReq
+	AppId          string
 	OutTradeNo     string `xml:"out_trade_no" json:"out_trade_no" validate:"required"`         // 商户系统内部订单号，要求32个字符内，只能是数字、大小写字母_-|* 且在同一个商户号下唯一。详见商户订单号
 	TotalFee       int64  `xml:"total_fee" json:"total_fee" validate:"required,gt=0"`          // 订单总金额，单位为分，详见支付金额
 	Body           string `xml:"body" json:"body" validate:"required"`                         // 商品简单描述，该字段请按照规范传递，具体请见参数规定
@@ -161,6 +162,9 @@ func (this *PayUnifiedOrderReq) ApiName() string {
 
 func (this *PayUnifiedOrderReq) toUrlValues() url.Values {
 	p := this.PayOrderOptional.toUrlValues()
+	if this.AppId != "" {
+		p.Set("appid", this.AppId)
+	}
 	p.Set("out_trade_no", this.OutTradeNo)
 	p.Set("total_fee", fmt.Sprintf("%d", this.TotalFee))
 	p.Set("body", this.Body)
