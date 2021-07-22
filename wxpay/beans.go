@@ -143,7 +143,7 @@ type PayUnifiedOrderReq struct {
 	SpBillCreateIp string `xml:"spbill_create_ip" json:"spbill_create_ip" validate:"required"` // 支持IPV4和IPV6两种格式的IP地址。用户的客户端IPP。
 	FeeType        string `xml:"fee_type,omitempty" json:"fee_type,omitempty"`                 // 符合ISO 4217标准的三位字母代码，默认人民币：CNY，详细列表请参见货币类型
 
-	OpenId     string `xml:"open_id,omitempty" json:"open_id,omitempty"`         // trade_type=JSAPI时（即公众号支付），此参数必传，此参数为微信用户在商户对应appid下的唯一标识。openid如何获取，可参考【获取openid】。企业号请使用【企业号OAuth2.0接口】获取企业号内成员userid，再调用【企业号userid转openid接口】进行转换
+	OpenId     string `xml:"openid,omitempty" json:"openid,omitempty"`           // trade_type=JSAPI时（即公众号支付），此参数必传，此参数为微信用户在商户对应appid下的唯一标识。openid如何获取，可参考【获取openid】。企业号请使用【企业号OAuth2.0接口】获取企业号内成员userid，再调用【企业号userid转openid接口】进行转换
 	SubOpenId  string `xml:"sub_openid" json:"sub_openid"`                       //trade_type=JSAPI，此参数必传，用户在子商户appid下的唯一标识。openid和sub_openid可以选传其中之一，如果选择传sub_openid,则必须传sub_appid。下单前需要调用【网页授权获取用户信息】接口获取到用户的Openid。
 	Attach     string `xml:"attach,omitempty" json:"attach,omitempty"`           // 附加数据，在查询API和支付通知中原样返回，可作为自定义参数使用。
 	DeviceInfo string `xml:"device_info,omitempty" json:"device_info,omitempty"` // 自定义参数，可以为终端设备号(门店号或收银设备ID)，PC网页或公众号内支付可以传"WEB"
@@ -172,6 +172,9 @@ func (this *PayUnifiedOrderReq) toUrlValues() url.Values {
 	if this.SubOpenId != "" {
 		p.Set("sub_openid", this.SubOpenId)
 	}
+	if this.OpenId != "" {
+		p.Set("openid", this.OpenId)
+	}
 	p.Set("out_trade_no", this.OutTradeNo)
 	p.Set("total_fee", fmt.Sprintf("%d", this.TotalFee))
 	p.Set("body", this.Body)
@@ -179,7 +182,6 @@ func (this *PayUnifiedOrderReq) toUrlValues() url.Values {
 	p.Set("spbill_create_ip", this.SpBillCreateIp)
 	p.Set("fee_type", this.FeeType)
 
-	p.Set("openid", this.OpenId)
 	p.Set("time_start", this.TimeStart)
 	p.Set("time_expire", this.TimeExpire)
 	p.Set("device_info", this.DeviceInfo)
