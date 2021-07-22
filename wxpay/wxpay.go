@@ -204,8 +204,12 @@ func (this *client) execute(httpCli *http.Client, in Request, out interface{}) e
 	}
 	params.Set("mch_id", this.mchId)
 	if this.subAppId != "" && this.subMchId != "" {
-		params.Set("sub_appid", this.subAppId)
-		params.Set("sub_mch_id", this.subMchId)
+		if params.Get("sub_mch_id") == "" {
+			params.Set("sub_mch_id", this.subMchId)
+		}
+		if params.Get("sub_appid") == "" {
+			params.Set("sub_appid", this.subAppId)
+		}
 	}
 	params.Set("sign_type", this.signType)
 	params.Set("nonce_str", internal.RandomString(16))
