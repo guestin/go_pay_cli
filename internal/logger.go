@@ -17,5 +17,5 @@ func (this *_logger) Debug(args ...interface{}) {
 }
 
 func (this *_logger) Debugf(template string, args ...interface{}) {
-	fmt.Printf(template, args...)
+	fmt.Printf(template+"\n", args...)
 }

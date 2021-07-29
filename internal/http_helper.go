@@ -21,16 +21,16 @@ func HttpDo(parentCtx context.Context,
 	defer func() {
 		stop := time.Now()
 		latency := stop.Sub(start)
-		GLogger.Debugf("%s %s %s latency : %s"+
-			"\n%s"+
-			"\n%s"+
-			"\n%s",
+		GLogger.Debugf("%s %s %d latency : %s"+
+			"request：\n%s"+
+			"response：\n%s"+
+			"error: \n%v",
 			method,
 			url,
 			httpStatusCode,
 			latency.String(),
 			reqBody,
-			respBody,
+			strings.Replace(string(respBody), "\n", "", -1),
 			err,
 		)
 	}()
