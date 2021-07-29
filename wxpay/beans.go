@@ -167,7 +167,7 @@ func (this *PayUnifiedOrderReq) toUrlValues() url.Values {
 		p.Set("appid", this.AppId)
 	}
 	if this.SubAppId != "" {
-		p.Set("appid", this.SubAppId)
+		p.Set("sub_appid", this.SubAppId)
 	}
 	if this.SubOpenId != "" {
 		p.Set("sub_openid", this.SubOpenId)
